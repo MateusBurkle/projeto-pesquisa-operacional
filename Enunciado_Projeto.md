@@ -1,29 +1,25 @@
 # Otimização da compra de computadores para uma empresa
 
-## A empresa tem R$ 100.000 para renovar computadores.
+## A empresa tem R$ 108.000 para renovar computadores dos departamento Administrativo, Desemvolvimento e Financeiro. 
+## A manutencao por ano e ate e R$ 8.000 , consumo de total de energia por mes 150 KHW
 
-### Existem três modelos:
+## Precisa renovar 24 maquinas no total, sendo 8 computadores no Administrativo, 6 computadores no Financeiro  e computadores no 10 Desenvolvimento. E também para cada departamento tem um valor de desempenho minimimo definido pela a tabela abaixo:
 
-#### Computador A
+## 
+| Departamento    | Desempenho mínimo | Máximo de máquinas |
+| --------------- | ----------------: | -----------------: |
+| Administrativo  |    **420 pontos** |                  8 |
+| Financeiro      |    **450 pontos** |                  6 |
+| Desenvolvimento |    **720 pontos** |                 10 |
 
-. R$ 3.000
-. desempenho = 60 pontos
-. Consumo = 2000 Kilowatts por Mes
+## Existem três modelos:
 
-#### Computador B
+| Computador | Preço por unidade | Desempenho | Consumo mensal por notebook | Manutenção anual por notebook |
+| ---------- | ----------------: | ---------: | --------------------------: | ----------------------------: |
+| A          |          R$ 3.000 |  60 pontos |                       5 kWh |                        R$ 400 |
+| B          |          R$ 5.000 |  90 pontos |                       8 kWh |                        R$ 300 |
+| C          |          R$ 7.000 | 120 pontos |                      12 kWh |                        R$ 250 |
 
-- R$ 5.000
-- desempenho = 90 pontos
-- Consumo = Consumo Kilowatts por mes 
 
-#### Computador C
 
-- R$ 7.000
-- desempenho = 120 pontos
-- Consumo = 
 
- ## A empresa precisa comprar pelo menos determinado número de máquinas para Administrativo, Desenvolvimento e Financeiro
-
-## Para a departamento de Desenvolvimento o score de desempenho deve ser de ate 3000 pontos e deve conter pelo o menos no minimo 2 
-
-### Qual combinação de computadores maximiza a capacidade total da empresa dentro do orçamento disponível?
