@@ -1,0 +1,8 @@
+# Se o Usuario for utilizar o linux 
+# Bibliotecas comuns para prática de Python
+# Adicione outras conforme precisar (uma por linha) e rode:
+#   .venv/bin/pip install -r requirements.txt
+numpy
+pandas
+ipykernel
+ortools
