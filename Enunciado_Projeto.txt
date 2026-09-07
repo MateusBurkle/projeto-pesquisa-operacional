@@ -8,13 +8,13 @@ Computador A
 
 * R$ 3.000
 * desempenho = 60 pontos
-* Consumo = 2000 watts por hora 
+* Consumo = 2000 Kilowatts por Mes
 
 Computador B
 
 * R$ 5.000
 * desempenho = 90 pontos
-* Consumo = 
+* Consumo = Consumo Kilowatts por mes 
 
 Computador C
 
