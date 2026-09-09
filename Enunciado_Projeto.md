@@ -1,6 +1,6 @@
 # Otimização da compra de computadores para uma empresa
 
-## A empresa tem R$ 109.000 para renovar computadores dos departamento Administrativo, Desemvolvimento e Financeiro. 
+## A empresa tem R$ 114.000 para renovar computadores dos departamento Administrativo, Desemvolvimento e Financeiro. 
 ## A manutencao por ano e ate e R$ 8.500 , consumo de total de energia por mes 150 KHW
 
 ## Precisa renovar 24 maquinas no total, sendo 8 computadores no Administrativo, 6 computadores no Financeiro  e computadores no 10 Desenvolvimento. E também para cada departamento tem um valor de desempenho minimimo definido pela a tabela abaixo:
