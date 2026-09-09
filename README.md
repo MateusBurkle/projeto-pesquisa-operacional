@@ -8,4 +8,4 @@
 - Enunciado_Projeto.md -> aonde tem todo o enunciado e as variaveis de decisão, restricões e a função objetivo
 - main.py -> código que realiza o cálculo para encontrar os melhores valores possíveis que satisfaz as condições imposta
 #### Autores:
-Mateus Burkle Nascimento 10434370 / Cassio da Silva Melo / Carlos Eduardo da Costa
+Mateus Burkle Nascimento 10434370 / Cassio da Silva Melo 10434493 / Carlos Eduardo da Costa 10434492
