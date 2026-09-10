@@ -35,20 +35,31 @@ solver.Add(a_fin + b_fin + c_fin == 6)
 solver.Add(a_des + b_des + c_des == 12)
 
 # Restrição de Consumo por energia
-solver.Add(5 * computador_a + 8 * computador_b + 10 * computador_c <= 180)
+solver.Add(5 * computador_a + 8 * computador_b + 10 * computador_c <= 205)
 
 # Restrição de manutenção dos computadores
-solver.Add(400 * computador_a + 300 * computador_b + 250 * computador_c <= 9000)
+solver.Add(400 * computador_a + 300 * computador_b + 250 * computador_c <= 8500)
 
-# Restrição do computador A no departamento de desenvolvimento
-solver.Add(c_des>=6)
+
+# Restrição do Administrativo 
+solver.Add(a_adm <= 3)
+solver.Add(c_adm >= 2)
+
+# Restrição do Financeiro
+solver.Add(a_fin <= 2)
+solver.Add(c_fin >= 2)
+
+# Restrição Desenvolvimento
+solver.Add(a_des <= 3)
+solver.Add(c_des >= 6)
+
 
 
 # Orçamento máximo de compra 
 custo = 3300 * computador_a + 5000 * computador_b + 6500 * computador_c
 
 # Limitando o orcamento maximo de compra
-solver.Add(custo <= 114000) 
+solver.Add(custo <= 200000) 
 
 
 # Função Obejtivo minimizando o custo da compra
@@ -58,7 +69,7 @@ solver.Minimize(custo)
 solver.Solve()
 
 print("\n")
-print(f"O custo ótimo = {solver.Objective().Value()}")
+print(f"O custo ótimo = R$ {solver.Objective().Value():.2f}")
 
 
 print('\nPara o Departamento Financeiro:')
