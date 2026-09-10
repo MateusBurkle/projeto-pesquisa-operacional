@@ -54,7 +54,6 @@ solver.Add(a_des <= 3)
 solver.Add(c_des >= 6)
 
 
-
 # Orçamento máximo de compra 
 custo = 3300 * computador_a + 5000 * computador_b + 6500 * computador_c
 
@@ -70,7 +69,6 @@ solver.Solve()
 
 print("\n")
 print(f"O custo ótimo = R$ {solver.Objective().Value():.2f}")
-
 
 print('\nPara o Departamento Financeiro:')
 print(f"A quantidade de computadores A no departamento de Financeiro: {int(a_fin.solution_value())}")
