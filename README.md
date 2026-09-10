@@ -1,8 +1,11 @@
 # Projeto de Pesquisa Operacional
-## o projeto se trata de criar um codigo de otimizacao linear sobre um cenario especifico, colocando em pratica o conhecimento tecnico das aulas teoricas e praticas feitas durante o semestre
+## O projeto se trata de criar um codigo de otimizacao linear sobre um cenario especifico, colocando em pratica o conhecimento tecnico das aulas teoricas e praticas feitas durante o semestre
 
-# O cenario seria a renovacao de computadores em uma empresa de media porte no Brasil
-## Nesse codigo sera utilizado a linguagem Python e a biblioteca ortools da Google para a realizacao 
+### O cenário seria a renovação de computadores em uma empresa de media porte, no entanto existe algumas restrições que deve ser seguidas para realizar a melhor compra possivel. 
+### Nesse código será utilizado a linguagem Python e a biblioteca ortools da Google para a realização 
 
-### Autores:
-Mateus Burkle Nascimento 10434370 / Cassio da Silva Melo / Carlos Eduardo da Costa
+### Arquivos 
+- Enunciado_Projeto.md -> aonde tem todo o enunciado e as variaveis de decisão, restricões e a função objetivo
+- main.py -> código que realiza o cálculo para encontrar os melhores valores possíveis que satisfaz as condições imposta
+#### Autores:
+Mateus Burkle Nascimento 10434370 / Cassio da Silva Melo 10434493 / Carlos Eduardo da Costa 10434492
