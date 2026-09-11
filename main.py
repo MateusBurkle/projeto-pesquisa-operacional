@@ -58,7 +58,7 @@ solver.Add(c_des >= 6)
 custo = 3300 * computador_a + 5000 * computador_b + 6500 * computador_c
 
 # Limitando o orcamento maximo de compra
-solver.Add(custo <= 200000) 
+solver.Add(custo <= 132000) 
 
 
 # Função Obejtivo minimizando o custo da compra
