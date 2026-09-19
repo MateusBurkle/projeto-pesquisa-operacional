@@ -5,7 +5,7 @@
 ### Nesse código será utilizado a linguagem Python e a biblioteca ortools da Google para a realização 
 
 ### Arquivos 
-- Enunciado_Projeto.md -> aonde tem todo o enunciado e as variaveis de decisão, restricões e a função objetivo
+- Enunciado_Projeto.md -> aonde tem todo o enunciado do projeto
 - main.py -> código que realiza o cálculo para encontrar os melhores valores possíveis que satisfaz as condições imposta
 #### Autores:
 Mateus Burkle Nascimento 10434370 / Cassio da Silva Melo 10434493 / Carlos Eduardo da Costa 10434492
