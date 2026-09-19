@@ -7,9 +7,9 @@ a_fin = solver.IntVar(0, 6, "a_fin")
 b_fin = solver.IntVar(0, 6, "b_fin")
 c_fin = solver.IntVar(0, 6, "c_fin")
 
-a_des = solver.IntVar(0,10, 'a_des')
-b_des = solver.IntVar(0,10, 'b_des')
-c_des = solver.IntVar(0,10, 'c_des')
+a_des = solver.IntVar(0,12, 'a_des')
+b_des = solver.IntVar(0,12, 'b_des')
+c_des = solver.IntVar(0,12, 'c_des')
 
 a_adm = solver.IntVar(0,8, 'a_adm')
 b_adm = solver.IntVar(0,8, 'b_adm')
@@ -65,26 +65,30 @@ solver.Add(custo <= 132000)
 solver.Minimize(custo)
 
 # Para resolver nossas restrições
-solver.Solve()
+status = solver.Solve()
 
-print("\n")
-print(f"O custo ótimo = R$ {solver.Objective().Value():.2f}")
+# Só imprime os resultados se o solver encontrou a solução ótima
+if status == pywraplp.Solver.OPTIMAL:
+    print("\n")
+    print(f"O custo ótimo = R$ {solver.Objective().Value():.2f}")
 
-print('\nPara o Departamento Financeiro:')
-print(f"A quantidade de computadores A no departamento de Financeiro: {(a_fin.solution_value())}")
-print(f"A quantidade de computadores B no departamento de Financeiro: {(b_fin.solution_value())}")
-print(f"A quantidade de computadores C no departamento de Financeiro: {(c_fin.solution_value())}")
+    print('\nPara o Departamento Financeiro:')
+    print(f"A quantidade de computadores A no departamento de Financeiro: {(a_fin.solution_value())}")
+    print(f"A quantidade de computadores B no departamento de Financeiro: {(b_fin.solution_value())}")
+    print(f"A quantidade de computadores C no departamento de Financeiro: {(c_fin.solution_value())}")
 
-print('\nPara o Departamento Administrativo:')
-print(f"a quantidade de computadores A no departamento Administrativo: {(a_adm.solution_value())} ")
-print(f"a quantidade de computadores B no departamento Administrativo: {(b_adm.solution_value())} ")
-print(f"a quantidade de computadores C no departamento Administrativo: {(c_adm.solution_value())} ")
+    print('\nPara o Departamento Administrativo:')
+    print(f"a quantidade de computadores A no departamento Administrativo: {(a_adm.solution_value())} ")
+    print(f"a quantidade de computadores B no departamento Administrativo: {(b_adm.solution_value())} ")
+    print(f"a quantidade de computadores C no departamento Administrativo: {(c_adm.solution_value())} ")
 
-print('\nPara o Departamento Desenvolvimento:')
-print(f"a quantidade de computadores A no departamento Desenvolvimento: {(a_des.solution_value())} ")
-print(f"a quantidade de computadores B no departamento Desenvolvimento: {(b_des.solution_value())} ")
-print(f"a quantidade de computadores C no departamento Desenvolvimento: {(c_des.solution_value())} ")
+    print('\nPara o Departamento Desenvolvimento:')
+    print(f"a quantidade de computadores A no departamento Desenvolvimento: {(a_des.solution_value())} ")
+    print(f"a quantidade de computadores B no departamento Desenvolvimento: {(b_des.solution_value())} ")
+    print(f"a quantidade de computadores C no departamento Desenvolvimento: {(c_des.solution_value())} ")
 
-print(f"Total dos computadores a = {(computador_a.solution_value())}")
-print(f"Total dos computadores b = {(computador_b.solution_value())}")
-print(f"Total dos computadores c = {(computador_c.solution_value())}")
+    print(f"Total dos computadores a = {(computador_a.solution_value())}")
+    print(f"Total dos computadores b = {(computador_b.solution_value())}")
+    print(f"Total dos computadores c = {(computador_c.solution_value())}")
+else:
+    print("Não foi encontrada uma solução ótima para o problema (verifique as restrições).")
