@@ -87,8 +87,8 @@ if status == pywraplp.Solver.OPTIMAL:
     print(f"a quantidade de computadores B no departamento Desenvolvimento: {(b_des.solution_value())} ")
     print(f"a quantidade de computadores C no departamento Desenvolvimento: {(c_des.solution_value())} ")
 
-    print(f"Total dos computadores a = {(computador_a.solution_value())}")
-    print(f"Total dos computadores b = {(computador_b.solution_value())}")
-    print(f"Total dos computadores c = {(computador_c.solution_value())}")
+    print(f"Total dos computadores A = {(computador_a.solution_value())}")
+    print(f"Total dos computadores B = {(computador_b.solution_value())}")
+    print(f"Total dos computadores C = {(computador_c.solution_value())}")
 else:
     print("Não foi encontrada uma solução ótima para o problema (verifique as restrições).")
