@@ -61,7 +61,7 @@ custo = 3300 * computador_a + 5000 * computador_b + 6500 * computador_c
 solver.Add(custo <= 132000) 
 
 
-# Função Obejtivo minimizando o custo da compra
+# Função Objetivo minimizando o custo da compra
 solver.Minimize(custo)
 
 # Para resolver nossas restrições
