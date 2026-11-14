@@ -1,0 +1,17 @@
+{
+  "departamentos": {
+    "administrativo": { "quantidade": 10, "score": 640, "max_a": 5, "min_c": 0 },
+    "financeiro": { "quantidade": 5, "score": 400, "max_a": 5, "min_c": 1 },
+    "desenvolvimento": { "quantidade": 15, "score": 1700, "max_a": 0, "min_c": 8 }
+  },
+  "computadores": {
+    "A": { "desempenho": 60, "energia": 4, "manutencao": 450, "custo": 2800 },
+    "B": { "desempenho": 120, "energia": 9, "manutencao": 320, "custo": 4900 },
+    "C": { "desempenho": 190, "energia": 14, "manutencao": 180, "custo": 7600 }
+  },
+  "limites": {
+    "energia": 330,
+    "manutencao": 9000,
+    "orcamento": 185000
+  }
+}
