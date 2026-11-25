@@ -4,7 +4,7 @@ import os
 from ortools.linear_solver import pywraplp
 
 # Lendo os dados do arquivo JSON (que fica na mesma pasta deste arquivo)
-caminho_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dados.json")
+caminho_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dados_cenario2.json")
 with open(caminho_json, "r", encoding="utf-8") as arquivo:
     dados = json.load(arquivo)
 
