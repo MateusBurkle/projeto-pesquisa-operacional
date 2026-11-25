@@ -1,8 +1,8 @@
 {
   "departamentos": {
-    "administrativo": { "quantidade": 10, "score": 640, "max_a": 5, "min_c": 2 },
-    "financeiro": { "quantidade": 5, "score": 400, "max_a": 5, "min_c": 1 },
-    "desenvolvimento": { "quantidade": 15, "score": 1700, "max_a": 0, "min_c": 8 }
+    "administrativo": { "quantidade": 8, "score": 640, "max_a": 3, "min_c": 2 },
+    "financeiro": { "quantidade": 6, "score": 400, "max_a": 3, "min_c": 1 },
+    "desenvolvimento": { "quantidade": 12, "score": 1700, "max_a": 0, "min_c": 8 }
   },
   "computadores": {
     "A": { "desempenho": 60, "energia": 4, "manutencao": 450, "custo": 2800 },
