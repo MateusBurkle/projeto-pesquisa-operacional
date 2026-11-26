@@ -28,7 +28,7 @@ Existem três modelos de computador:
 
 ## Novidade: os dados agora ficam no arquivo `dados.json`
 
-Nesta versão do projeto, **nenhum número do problema fica escrito no código**. Todos os valores (orçamento, limites, scores, preços, desempenho, consumo, manutenção, máximos de A e mínimos de C) são lidos do arquivo [dados.json](dados.json). **Qualquer mudança no cenário deve ser feita nesse arquivo**, e o `main_teste.py` não deve ser alterado para isso.
+Nesta versão do projeto, **nenhum número do problema fica escrito no código**. Todos os valores (orçamento, limites, scores, preços, desempenho, consumo, manutenção, máximos de A e mínimos de C) são lidos do arquivo [dados.json](dados.json). **Qualquer mudança no cenário deve ser feita nesse arquivo**, e o `main_n2.py` não deve ser alterado para isso.
 
 ### Estrutura do `dados.json`
 
@@ -137,3 +137,80 @@ O objetivo do modelo é minimizar o custo total da compra. Ou seja, entre todas 
 
 ### Verificação do status da solução
 Antes de exibir os resultados, o código verifica se o solver realmente encontrou uma solução ótima (`status == pywraplp.Solver.OPTIMAL`). Isso é importante porque, se algum valor do JSON for alterado e o problema se tornar inviável (por exemplo, um orçamento baixo demais para atingir o desempenho mínimo exigido), o solver não terá uma resposta válida. Sem essa verificação, o código imprimiria valores sem sentido; com ela, o programa avisa que não foi possível encontrar uma solução ótima.
+
+## Parte 2 do projeto: entradas do modelo em arquivo JSON
+
+### Objetivo
+Na segunda parte do projeto, todas as entradas do modelo foram retiradas do código e passaram a ficar em arquivos JSON. Assim é possível mudar a quantidade de computadores de cada departamento, o desempenho mínimo, as características dos modelos A, B e C e os limites de energia, manutenção e orçamento sem tocar na lógica do programa ([main_n2.py](main_n2.py)).
+
+O motivo dessa mudança é permitir que **um analista altere apenas o arquivo JSON, e não o código do projeto**. Quem edita o código corre o risco de apagar um parêntese, trocar o nome de uma variável ou esquecer um valor em uma das restrições, e com isso gerar um erro de execução e ficar sem a solução procurada. No JSON o analista só mexe nos números. A estrutura do modelo (variáveis, restrições e função objetivo) continua a mesma e já foi testada.
+
+### Cenário 1: `dados.json` (cenário original)
+O arquivo [dados.json](dados.json) guarda os mesmos valores do enunciado da primeira parte do projeto:
+
+| Departamento    | Quantidade | Desempenho mínimo | Máximo de A | Mínimo de C |
+| --------------- | ---------: | ----------------: | ----------: | ----------: |
+| Administrativo  |          8 |               420 |           3 |           2 |
+| Financeiro      |          6 |               450 |           2 |           2 |
+| Desenvolvimento |         12 |               720 |           3 |           6 |
+
+| Computador | Custo    | Desempenho | Energia (kWh/mês) | Manutenção anual |
+| ---------- | -------: | ---------: | ----------------: | ---------------: |
+| A          | R$ 3.300 |         70 |                 5 |           R$ 400 |
+| B          | R$ 5.000 |        110 |                 8 |           R$ 300 |
+| C          | R$ 6.500 |        140 |                10 |           R$ 250 |
+
+| Limite                   | Valor      |
+| ------------------------ | ---------: |
+| Energia (kWh/mês)        |        205 |
+| Manutenção anual         |   R$ 8.500 |
+| Orçamento de compra      | R$ 132.000 |
+
+### Cenário 2: `dados_cenario2.json` (cenário pedido pelo professor)
+O professor pediu para verificar como o modelo se comporta em um cenário diferente. Para isso foi criado o arquivo [dados_cenario2.json](dados_cenario2.json), com a mesma estrutura do `dados.json` e outros valores:
+
+| Departamento    | Quantidade | Desempenho mínimo | Máximo de A | Mínimo de C |
+| --------------- | ---------: | ----------------: | ----------: | ----------: |
+| Administrativo  |          8 |               640 |           3 |           2 |
+| Financeiro      |          6 |               400 |           3 |           1 |
+| Desenvolvimento |         12 |              1700 |           0 |           8 |
+
+| Computador | Custo    | Desempenho | Energia (kWh/mês) | Manutenção anual |
+| ---------- | -------: | ---------: | ----------------: | ---------------: |
+| A          | R$ 2.800 |         60 |                 4 |           R$ 450 |
+| B          | R$ 4.900 |        120 |                 9 |           R$ 320 |
+| C          | R$ 7.600 |        190 |                14 |           R$ 180 |
+
+| Limite                   | Valor      |
+| ------------------------ | ---------: |
+| Energia (kWh/mês)        |        330 |
+| Manutenção anual         |   R$ 9.000 |
+| Orçamento de compra      | R$ 185.000 |
+
+### O que mudou entre os dois cenários
+- **Desempenho mínimo:** subiu no Administrativo (420 → 640) e principalmente no Desenvolvimento (720 → 1700). No Financeiro caiu (450 → 400).
+- **Exigências específicas:** o Desenvolvimento não pode mais comprar nenhum computador A (máximo 3 → 0) e precisa de pelo menos 8 computadores C (antes eram 6). O Financeiro ficou mais flexível: até 3 computadores A (antes 2) e no mínimo 1 C (antes 2).
+- **Computadores:** o modelo A ficou mais barato e mais fraco, o B ficou um pouco mais barato e mais forte, e o C ficou mais caro e mais potente, consumindo mais energia e gastando menos com manutenção.
+- **Limites:** energia (205 → 330 kWh), manutenção (R$ 8.500 → R$ 9.000) e orçamento (R$ 132.000 → R$ 185.000) aumentaram.
+- **Quantidade de máquinas:** continuou a mesma (8, 6 e 12, total de 26).
+
+### Resultado dos dois cenários
+Os dois cenários foram resolvidos pelo mesmo código, mudando apenas o arquivo de entrada. A comparação completa está em [COMPARACAO.md](COMPARACAO.md). Resumo:
+
+| Departamento    | Cenário 1 (A / B / C) | Cenário 2 (A / B / C) |
+| --------------- | :-------------------: | :-------------------: |
+| Administrativo  |       3 / 3 / 2       |       3 / 3 / 2       |
+| Financeiro      |       2 / 2 / 2       |       3 / 2 / 1       |
+| Desenvolvimento |       3 / 3 / 6       |       0 / 4 / 8       |
+| **Custo ótimo** |   **R$ 131.400,00**   |   **R$ 144.500,00**   |
+
+O custo do cenário 2 ficou R$ 13.100 maior (cerca de 10%), principalmente porque o Desenvolvimento passou a ser obrigado a comprar 8 computadores C, que agora custam R$ 7.600 cada.
+
+### Conclusão da Parte 2
+Para testar o cenário pedido pelo professor, nenhuma restrição, variável ou a função objetivo precisou ser reescrita: bastou criar um novo arquivo JSON com os valores desejados. Para escolher qual cenário será executado, o analista só precisa trocar o nome do arquivo na variável `caminho_json` do [main_n2.py](main_n2.py):
+
+```python
+caminho_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dados_cenario2.json")
+```
+
+Basta usar `"dados.json"` para rodar o cenário 1 ou `"dados_cenario2.json"` para rodar o cenário 2. Essa é a única alteração no programa, e o resto do código continua igual. Assim, um analista pode simular quantos cenários quiser criando novos arquivos JSON e trocando só esse nome, sem risco de introduzir um erro no código e ficar sem a solução do problema.
